@@ -13,6 +13,7 @@
 # Just runs cmd-line pgms raspistill, tesseract-ocr, flite to do all the work
 #
 # Version 1.0 2018.02.10 - initial release - rgrokett
+# v1.1 - added some text cleanup to improve reading
 #
 # http://kd.grokett.com/
 #
@@ -94,6 +95,13 @@ def volume(val): # Set Volume for Launch
     os.system(cmd)
     return 
 
+# TEXT CLEANUP
+def cleanText():
+    logger.info('cleanText()')
+    cmd = "sed -e $'s/\([0-9]\)/& /g' -e 's/[[:punct:]]/ /g' -e 'G' -i /tmp/text.txt"
+    os.system(cmd)
+    return
+    
 # Play TTS (Allow Interrupt)
 def playTTS():
     logger.info('playTTS()') 
@@ -105,6 +113,7 @@ def playTTS():
     rt.start()
     # Wait until finished speaking (unless interrupted)
     current_tts.communicate()
+    return
 
 
 # Stop TTS (with Interrupt)
@@ -116,7 +125,7 @@ def stopTTS():
         #current_tts.terminate()
         current_tts.kill()
         time.sleep(0.5)
-    
+    return 
 
 # GRAB IMAGE AND CONVERT
 def getData():
@@ -135,9 +144,12 @@ def getData():
     logger.info(cmd) 
     os.system(cmd)
     
+    # Cleanup text
+    cleanText()
+
     # Start reading text
     playTTS()
-
+    return
 
 
 ######
