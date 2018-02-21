@@ -9,7 +9,7 @@ The Reader is designed to be as absolutely simple to use as possible. No Interne
 
 ### Documentation
 ** See Full Instructions in the
-[PiTextReader.pdf](https://github.com/rgrokett/PiTextReader/PiTextReader.pdf) document **
+[PiTextReader.pdf](https://github.com/rgrokett/PiTextReader/raw/master/PiTextReader.pdf) document **
 
 
 ### Utilities
