@@ -98,7 +98,8 @@ def volume(val): # Set Volume for Launch
 # TEXT CLEANUP
 def cleanText():
     logger.info('cleanText()')
-    cmd = "sed -e $'s/\([0-9]\)/& /g' -e 's/[[:punct:]]/ /g' -e 'G' -i /tmp/text.txt"
+    cmd = "sed -e 's/\([0-9]\)/& /g' -e 's/[[:punct:]]/ /g' -e 'G' -i /tmp/text.txt"
+    logger.info(cmd) 
     os.system(cmd)
     return
     
