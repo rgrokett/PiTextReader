@@ -39,7 +39,7 @@ CAMERA  = "raspistill -cfx 128:128 --awb auto -rot 180 -t 500 -o /tmp/image.jpg"
 
 # GPIO BUTTONS
 BTN1	= 24	# The button!
-LED	= 18	# The button's LED!
+LED	    = 18	# The button's LED!
 
 
 ### FUNCTIONS
@@ -190,13 +190,13 @@ try:
     while True:
         if GPIO.input(BTN1) == GPIO.LOW:
             # Btn 1
-	    getData()
+            getData()
             rt.stop()
     	    rt = RaspberryThread( function = stopTTS ) # Stop Speaking text
             led(1)
-	    time.sleep(0.5)	 
+            time.sleep(0.5)	 
             speak("OK, ready")
-	time.sleep(0.2)	 
+	    time.sleep(0.2)	 
     
 except KeyboardInterrupt:
     logger.info("exiting")
