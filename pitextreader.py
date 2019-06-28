@@ -14,6 +14,7 @@
 #
 # Version 1.0 2018.02.10 - initial release - rgrokett
 # v1.1 - added some text cleanup to improve reading
+# v1.2 - removed tabs
 #
 # http://kd.grokett.com/
 #
@@ -29,17 +30,17 @@ import time
 
 
 ##### USER VARIABLES
-DEBUG	= 0	# Debug 0/1 off/on (writes to debug.log)
+DEBUG   = 0 # Debug 0/1 off/on (writes to debug.log)
 SPEED   = 1.0   # Speech speed, 0.5 - 2.0 
-VOLUME  = 90	# Audio volume
+VOLUME  = 90    # Audio volume
 
 # OTHER SETTINGS
 SOUNDS  = "/home/pi/PiTextReader/sounds/" # Directory for sound effect(s)
 CAMERA  = "raspistill -cfx 128:128 --awb auto -rot 180 -t 500 -o /tmp/image.jpg"
 
 # GPIO BUTTONS
-BTN1	= 24	# The button!
-LED	    = 18	# The button's LED!
+BTN1    = 24    # The button!
+LED     = 18    # The button's LED!
 
 
 ### FUNCTIONS
@@ -62,7 +63,7 @@ class RaspberryThread(threading.Thread):
         self.running = False 
 
 # LED ON/OFF
-def led(val):	
+def led(val):   
     logger.info('led('+str(val)+')') 
     if val:
        GPIO.output(LED,GPIO.HIGH)
@@ -122,7 +123,7 @@ def stopTTS():
     global current_tts
     # If button pressed, then stop audio
     if GPIO.input(BTN1) == GPIO.LOW:
-	logger.info('stopTTS()') 
+        logger.info('stopTTS()') 
         #current_tts.terminate()
         current_tts.kill()
         time.sleep(0.5)
@@ -192,11 +193,11 @@ try:
             # Btn 1
             getData()
             rt.stop()
-    	    rt = RaspberryThread( function = stopTTS ) # Stop Speaking text
+            rt = RaspberryThread( function = stopTTS ) # Stop Speaking text
             led(1)
-            time.sleep(0.5)	 
+            time.sleep(0.5)  
             speak("OK, ready")
-	    time.sleep(0.2)	 
+        time.sleep(0.2)  
     
 except KeyboardInterrupt:
     logger.info("exiting")
