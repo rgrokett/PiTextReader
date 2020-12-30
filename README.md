@@ -2,6 +2,7 @@
 ## Scan printed text and converts to speech for the blind.
 ## Extremely simple interface and NO Internet needed.
 
+
 ### Overview
 PiTextReader allows someone with impaired vision to “read” text from envelopes, letters and other items.  It snapshots an image of the item, converts to plain text using OCR (Optical Character Recognition) and then speaks the text using text-to-speech. 
 
